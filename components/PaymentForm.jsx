@@ -8,6 +8,8 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const PaymentForm = ({checkoutToken, shippingData, onCaptureCheckout, backStep, nextStep, timeout}) => {
 
+  console.log(shippingData);
+
   async function handleSubmit(event, elements, stripe){
     event.preventDefault();
 
@@ -48,7 +50,7 @@ const PaymentForm = ({checkoutToken, shippingData, onCaptureCheckout, backStep, 
 
   return (
     <>
-      <OrderReview checkoutToken={checkoutToken}/>
+      <OrderReview checkoutToken={checkoutToken} shippingData={shippingData}/>
       <Divider />
       <Box 
         as='section' 
@@ -69,7 +71,12 @@ const PaymentForm = ({checkoutToken, shippingData, onCaptureCheckout, backStep, 
                   <Flex justifyContent={'space-between'}>
                     <Button colorScheme={'red'} onClick={()=>backStep()}>Back</Button>
                     <Button colorScheme={'blue'} type='submit' disabled={!stripe}>
-                      Pay {checkoutToken.live.subtotal.formatted_with_symbol}
+                      Pay {' '}
+                      {
+                        shippingData.shippingOptionPrice === 0
+                        ? checkoutToken.live.subtotal.formatted_with_symbol
+                        : `$${Number(checkoutToken.live.subtotal.raw + shippingData.shippingOptionPrice).toFixed(2)}`
+                      }
                     </Button>
                   </Flex>
                 </form>

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Box, Heading, Flex, Text, Badge, Stack, Divider} from '@chakra-ui/react';
 
-const OrderReview = ({checkoutToken}) => {
+const OrderReview = ({checkoutToken, shippingData}) => {
   return (
     <Stack 
       as='section' 
@@ -42,7 +42,7 @@ const OrderReview = ({checkoutToken}) => {
         </Flex>
         <Flex w='full' justifyContent={'space-between'} fontWeight={'bold'}>
           <Text>Shipping</Text>
-          <Text>$0.00</Text>
+          <Text>{`$${Number(shippingData.shippingOptionPrice).toFixed(2)}`}</Text>
         </Flex>
         <Flex w='full' justifyContent={'space-between'} fontWeight={'bold'}>
           <Text fontWeight={'bold'}>Taxes (estimated)</Text>
@@ -51,7 +51,13 @@ const OrderReview = ({checkoutToken}) => {
         <Divider />
         <Flex w='full' fontSize={'2xl'} justifyContent={'space-between'} fontWeight={'bold'}>
           <Text>Total</Text>
-          <Text>{checkoutToken.live.subtotal.formatted_with_symbol}</Text>
+          <Text>
+            {
+              shippingData.shippingOptionPrice === 0
+              ? checkoutToken.live.subtotal.formatted_with_symbol
+              : `$${Number(checkoutToken.live.subtotal.raw + shippingData.shippingOptionPrice).toFixed(2)}`
+            }
+          </Text>
         </Flex>
       </Stack>
     </Stack>

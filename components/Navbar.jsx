@@ -28,7 +28,10 @@ const Navbar = () => {
               <Link fontWeight={'bold'} _hover={{textDecoration:'none'}} _focus={{border: 'none'}}>
                 <Flex gap={1} alignItems={'center'}>
                   <Icon as={SiShopify} h={5} w={5}/>
-                  <Text mt={1} fontSize={'xl'}>Kommerce</Text>
+                  <Flex mt={2} fontSize={'xl'}>
+                    <Text color={'orange.400'}>Ko</Text>
+                    <Text>mmerce</Text>
+                  </Flex>
                 </Flex>
               </Link>
             </NextLink>

@@ -112,74 +112,74 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
   }
 
   return(
-    <Grid h='full' templateColumns={{base: '1fr', md: '1fr 1fr'}} gap={4} rounded='md'>
-      <Box minH={{base: 'xs', md: 'full'}} position={'relative'} overflow={'hidden'} roundedLeft={'md'} roundedRight={{base: 'md', md: 'none'}}>
-        <Image 
-          src={image.url} 
-          layout='fill'
-          alt={name}
-          objectFit='cover'
-        />
-      </Box>
-
-      <Container maxW={{base: 'full', md: 'container.xl'}}>
-        <Flex h={{base: 'full'}} py={{base: 4, md: 8}} px={{base: 2, md: 0}} direction={'column'}>    
-          <Box mb={8}>
-            <Heading as='h1' size={'xl'}>{name}</Heading>
-            <Badge maxW='fit-content' colorScheme='orange' variant='solid' pt={0.5}>{categories[0]?.name}</Badge>
-            <Box maxW='fit-content'>
-              <Tooltip label='5 out of 5 stars'>
-                <Box display='flex' alignItems='center' maxW={'fit-content'} h='full'>
-                  {Array(5)
-                    .fill('')
-                    .map((_, i) => (
-                      <StarIcon
-                        key={i}
-                        color={'orange.400'}
-                      />
-                    ))
-                  }
-                  <Text mt={2} ml={2}>10 reviews</Text>
-                </Box>
-              </Tooltip>
+    <Container h='full' maxW='container.xl' pt={{base: 8, md: 0}}>
+      <Grid h='full' templateColumns={{base: '1fr', md: '1fr 1fr'}} gap={4} rounded='md'>
+        <Box minH={{base: 'xs', md: 'full'}} position={'relative'} overflow={'hidden'} roundedLeft={'md'} roundedRight={{base: 'md', md: 'none'}}>
+          <Image
+            src={image.url}
+            layout='fill'
+            alt={name}
+            objectFit='cover'
+          />
+        </Box>
+        <Container maxW={{base: 'full', md: 'container.xl'}}>
+          <Flex h={{base: 'full'}} py={{base: 4, md: 8}} px={0} direction={'column'}>
+            <Box mb={8}>
+              <Heading as='h1' size={'xl'}>{name}</Heading>
+              <Badge maxW='fit-content' colorScheme='orange' variant='solid' pt={0.5}>{categories[0]?.name}</Badge>
+              <Box maxW='fit-content'>
+                <Tooltip label='5 out of 5 stars'>
+                  <Box display='flex' alignItems='center' maxW={'fit-content'} h='full'>
+                    {Array(5)
+                      .fill('')
+                      .map((_, i) => (
+                        <StarIcon
+                          key={i}
+                          color={'orange.400'}
+                        />
+                      ))
+                    }
+                    <Text mt={2} ml={2}>10 reviews</Text>
+                  </Box>
+                </Tooltip>
+              </Box>
             </Box>
-          </Box>
-          
-          <Box mb={8} color={'gray.300'} fontSize={'lg'}>
-            <Box dangerouslySetInnerHTML={{__html: description}}/>
-            <Box maxW={{base: 'full', sm: 'md'}}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor veniam repellendus cupiditate autem, ab laudantium in. Corporis provident obcaecati aut.
+      
+            <Box mb={8} color={'gray.300'} fontSize={'lg'}>
+              <Box dangerouslySetInnerHTML={{__html: description}}/>
+              <Box maxW={{base: 'full', sm: 'md'}}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor veniam repellendus cupiditate autem, ab laudantium in. Corporis provident obcaecati aut.
+              </Box>
             </Box>
-          </Box>
-          
-          <Box mb={{base: 8, md: 16}}>
-            <Flex justifyContent={'space-between'} direction={{base: 'row', md: 'column'}}>
-              <Flex gap={2} alignItems={'center'}>
-                <Text pt={0.5} fontSize='2xl' color={'orange.300'}>{price.formatted_with_symbol}</Text>
-                <Badge colorScheme='orange' fontSize={'lg'}>50%</Badge>
+      
+            <Box mb={{base: 8, md: 16}}>
+              <Flex justifyContent={'space-between'} direction={{base: 'row', md: 'column'}}>
+                <Flex gap={2} alignItems={'center'}>
+                  <Text pt={0.5} fontSize='2xl' color={'orange.300'}>{price.formatted_with_symbol}</Text>
+                  <Badge colorScheme='orange' fontSize={'lg'}>50%</Badge>
+                </Flex>
+                <Text as='del' color='gray.400' display={'block'} fontSize={'lg'} fontWeight={'semibold'}>{`$${(price.raw * 2).toFixed(2)}`}</Text>
               </Flex>
-              <Text as='del' color='gray.400' display={'block'} fontSize={'lg'} fontWeight={'semibold'}>{`$${(price.raw * 2).toFixed(2)}`}</Text>
+            </Box>
+            <Flex direction={{base: 'column', md: 'row'}} gap={2} mb={4}>
+              <NumberInput defaultValue={currentQuantity} max={30} min={0} rounded='md' bg={'gray.600'}>
+                <NumberInputField textAlign={'center'} color='white' fontWeight={'bold'}/>
+                <NumberInputStepper bg='transparent'>
+                  <NumberIncrementStepper onClick={()=>{setCurrentQuantity(prevQt=>prevQt + 1)}}/>
+                  <NumberDecrementStepper onClick={()=>{currentQuantity > 0 && setCurrentQuantity(prevQt=>prevQt - 1)}}/>
+                </NumberInputStepper>
+              </NumberInput>
+              <Button colorScheme={'yellow'} onClick={addToCart} w='full'>
+                <Flex gap={2} alignItems={'center'}>
+                  <Icon as={FaShoppingCart} h={5} w={5}/>
+                  <Text mt={1}>Add to Cart</Text>
+                </Flex>
+              </Button>
             </Flex>
-          </Box>
-
-          <Flex direction={{base: 'column', md: 'row'}} gap={2} mb={4}>
-            <NumberInput defaultValue={currentQuantity} max={30} min={0} rounded='md' bg={'gray.600'}>
-              <NumberInputField textAlign={'center'} color='white' fontWeight={'bold'}/>
-              <NumberInputStepper bg='transparent'>
-                <NumberIncrementStepper onClick={()=>{setCurrentQuantity(prevQt=>prevQt + 1)}}/>
-                <NumberDecrementStepper onClick={()=>{currentQuantity > 0 && setCurrentQuantity(prevQt=>prevQt - 1)}}/>
-              </NumberInputStepper>
-            </NumberInput> 
-            <Button colorScheme={'yellow'} onClick={addToCart} w='full'>
-              <Flex gap={2} alignItems={'center'}>
-                <Icon as={FaShoppingCart} h={5} w={5}/>
-                <Text mt={1}>Add to Cart</Text>
-              </Flex>
-            </Button>
           </Flex>
-        </Flex>
-      </Container>
-    </Grid>
+        </Container>
+      </Grid>
+    </Container>
   )
 }
 

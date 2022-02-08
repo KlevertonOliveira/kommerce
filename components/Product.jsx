@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import Image from 'next/image';
-import {Text, Box, Tooltip, Link} from '@chakra-ui/react';
+import {Text, Box, Tooltip, Link, Flex} from '@chakra-ui/react';
 import {StarIcon} from '@chakra-ui/icons';
 
 const Product = ({name, price, image, permalink}) => {
@@ -19,13 +19,18 @@ const Product = ({name, price, image, permalink}) => {
           </Box>
         </Link>
       </NextLink>
-      <Box maxW='fit-content' mt={2} mb={1}>
+      <Flex justifyContent='space-between' mt={2} mb={1}>
         <NextLink href={`products/${permalink}`} passHref>
           <Link as='a' fontSize={'xl'} fontWeight={'bold'}>
             {name}
           </Link>
         </NextLink>
-      </Box>
+        <NextLink href={`products/${permalink}`} passHref>
+          <Link as='a' _hover={{textDecoration: 'none'}}>
+            <Text fontSize={'lg'} fontWeight={'semibold'}>{price.formatted_with_symbol}</Text>
+          </Link>
+        </NextLink>
+      </Flex>
       <Box maxW='fit-content'>
         <NextLink href={`products/${permalink}`} passHref>
           <Link as='a'>        
@@ -42,13 +47,6 @@ const Product = ({name, price, image, permalink}) => {
                 }
               </Box>
             </Tooltip>
-          </Link>
-        </NextLink>
-      </Box>
-      <Box maxW={'fit-content'}>
-        <NextLink href={`products/${permalink}`} passHref>
-          <Link as='a' _hover={{textDecoration: 'none'}}>
-            <Text fontSize={'lg'} fontWeight={'semibold'}>{price.formatted_with_symbol}</Text>
           </Link>
         </NextLink>
       </Box>

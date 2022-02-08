@@ -1,4 +1,4 @@
-import { Flex, Grid, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, Text } from '@chakra-ui/react';
 import Navbar from './Navbar';
 
 const Layout = ({children}) => {
@@ -18,11 +18,19 @@ const Layout = ({children}) => {
         p={4}
         direction={'column'} 
         alignItems={'center'}
+        fontWeight={'bold'} fontSize={'sm'}
       >
-        <Text fontWeight={'bold'} fontSize={'sm'}>
-          &copy; Kleverton Oliveira 
+        <Text>
+          &copy; {' '} 
+          <Box display={'inline'} color='orange.400'>K</Box>
+          leverton {' '}
+          <Box display={'inline'} color='orange.400'>O</Box>
+          liveira 
         </Text>
-        <Text fontWeight={'semibold'} fontSize={'sm'}>2022</Text>
+        <Text>
+          20
+          <Box display={'inline'} color='orange.400'>22</Box>
+        </Text>
       </Flex>
     </Grid>
   )

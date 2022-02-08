@@ -45,10 +45,12 @@ const ShippingAddressForm = ({checkoutToken, getShippingData}) => {
   /* Subdivisions info to populate Select's options */
   const [shippingOptions, setShippingOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
+  const [shippingOptionPrice, setShippingOptionPrice] = useState(0);
 
   async function fetchShippingOptions(checkoutTokenId, country, region = null){
     const options = await commerce.checkout.getShippingOptions(checkoutTokenId, {country, region});
     setShippingOptions(options);
+    setShippingOptionPrice(options[0].price.raw);
     setSelectedOption(options[0].id);
   }
 
@@ -59,10 +61,6 @@ const ShippingAddressForm = ({checkoutToken, getShippingData}) => {
   const options = shippingOptions.map((option)=>({id: option.id, label: `${option.description} - (${option.price.formatted_with_symbol})`}))
 
   const methods = useForm();
-  
-  function onSubmit(data){
-    console.log(data);
-  } 
 
   const responsiveColumns = useBreakpointValue({base: 2, sm: 1})
   
@@ -70,7 +68,7 @@ const ShippingAddressForm = ({checkoutToken, getShippingData}) => {
     <Box py={10} px={{base: 4, md: 6}}>
       <Heading fontSize={'3xl'} pb={8}>Your Details</Heading>
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit((data)=>getShippingData({...data, selectedCountry, selectedSubdivision, selectedOption}))}>
+        <form onSubmit={methods.handleSubmit((data)=>getShippingData({...data, selectedCountry, selectedSubdivision, selectedOption, shippingOptionPrice}))}>
           <SimpleGrid columns={2} columnGap={3} rowGap={6} w='full'>
             <CustomInput label='First Name' name='firstName' placeholder='Sherlock'/>
             <CustomInput label='Last Name' name='lastName' placeholder='Holmes'/>
