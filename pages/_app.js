@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import { ChakraProvider } from '@chakra-ui/react';
+import Layout from '../components/Layout';
+import { CartProvider } from '../context/cart';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+export default function App({Component, pageProps}){
 
-export default MyApp
+
+  return (
+    <CartProvider>
+      <ChakraProvider>
+        <Layout>
+          <Component {...pageProps}/>
+        </Layout>
+      </ChakraProvider>
+    </CartProvider> 
+  )
+};
