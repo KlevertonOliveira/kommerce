@@ -1,4 +1,4 @@
-import { Heading, Divider, Flex, Button, Box} from '@chakra-ui/react';
+import { Heading, Divider, Flex, Button, Box, useToast} from '@chakra-ui/react';
 import OrderReview from './OrderReview';
 
 import {Elements, CardElement, ElementsConsumer} from '@stripe/react-stripe-js';
@@ -8,7 +8,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const PaymentForm = ({checkoutToken, shippingData, onCaptureCheckout, backStep, nextStep, timeout}) => {
 
-  console.log(shippingData);
+  const toast = useToast();
 
   async function handleSubmit(event, elements, stripe){
     event.preventDefault();
@@ -19,7 +19,15 @@ const PaymentForm = ({checkoutToken, shippingData, onCaptureCheckout, backStep, 
 
     const {error, paymentMethod} = await stripe.createPaymentMethod({type: 'card', card: cardElement}); 
 
-    if(error) console.log(error);
+    if(error) return(
+      toast({
+        title: 'Error',
+        description: "An error has ocurred. Please, make sure to fill the number card field correctly.",
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    );
 
     const {firstName, lastName, address1, email, city, zip, selectedSubdivision, selectedCountry, selectedOption} = shippingData;
     

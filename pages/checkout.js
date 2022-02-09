@@ -65,8 +65,6 @@ const Checkout = () => {
       refreshCart();
     }, 3000);
   }
-  
-  const isCartEmpty = !isLoading && !cart?.line_items.length;
 
   if(isLoading || !checkoutToken) return (
     <Grid h='full' justifyItems={'center'} alignContent={'center'}>
@@ -74,8 +72,6 @@ const Checkout = () => {
       <CircularProgress isIndeterminate color='green.300' />
     </Grid>
   )
-
-  /* if(isCartEmpty) return router.push('/') */
 
   let Confirmation = () => order.customer ? 
   (

@@ -112,8 +112,8 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
   }
 
   return(
-    <Container h='full' maxW='container.xl' pt={{base: 8, md: 0}}>
-      <Grid h='full' templateColumns={{base: '1fr', md: '1fr 1fr'}} gap={4} rounded='md'>
+    <Container h='full' maxW='container.xl' py={{base: 4, md: 0}}>
+      <Grid h='full' templateColumns={{base: '1fr', md: '1fr 1fr'}} rounded='md' bg={'whiteAlpha.100'}>
         <Box minH={{base: 'xs', md: 'full'}} position={'relative'} overflow={'hidden'} roundedLeft={'md'} roundedRight={{base: 'md', md: 'none'}}>
           <Image
             src={image.url}
@@ -122,7 +122,7 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
             objectFit='cover'
           />
         </Box>
-        <Container maxW={{base: 'full', md: 'container.xl'}}>
+        <Container maxW={{base: 'full', md: 'container.xl'}} p={4}>
           <Flex h={{base: 'full'}} py={{base: 4, md: 8}} px={0} direction={'column'}>
             <Box mb={8}>
               <Heading as='h1' size={'xl'}>{name}</Heading>

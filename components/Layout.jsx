@@ -21,15 +21,14 @@ const Layout = ({children}) => {
         fontWeight={'bold'} fontSize={'sm'}
       >
         <Text>
-          &copy; {' '} 
-          <Box display={'inline'} color='orange.400'>K</Box>
+          &copy; {' '}
+          <Box as='span' display={'inline'} color='orange.400'>K</Box>
           leverton {' '}
-          <Box display={'inline'} color='orange.400'>O</Box>
+          <Box as='span' display={'inline'} color='orange.400'>O</Box>
           liveira 
         </Text>
         <Text>
-          20
-          <Box display={'inline'} color='orange.400'>22</Box>
+          2022
         </Text>
       </Flex>
     </Grid>
