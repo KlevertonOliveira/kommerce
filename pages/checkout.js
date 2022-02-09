@@ -9,6 +9,7 @@ import ShippingAddressForm from '../components/ShippingAddressForm';
 import PaymentForm from '../components/PaymentForm';
 
 import commerce from '../lib/commerce';
+import Head from 'next/head';
 
 const Checkout = () => {
 
@@ -63,7 +64,7 @@ const Checkout = () => {
     setTimeout(()=>{
       setIsFinished(true);
       refreshCart();
-    }, 3000);
+    }, 7000);
   }
 
   if(isLoading || !checkoutToken) return (
@@ -147,6 +148,10 @@ const Checkout = () => {
   return (
     <Container maxW='container.xl'>
       <Box w='full' h='full' mb={12}>
+        <Head>
+          <title>Kommerce | Checkout</title>
+          <meta name="description" content="Kommerce checkout page" />
+        </Head>
         <Heading textAlign={'center'} fontSize={'4xl'} py={8}>
           Checkout
         </Heading>

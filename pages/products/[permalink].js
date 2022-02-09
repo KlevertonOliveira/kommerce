@@ -9,6 +9,7 @@ import { StarIcon } from '@chakra-ui/icons';
 import { FaShoppingCart } from 'react-icons/fa';
 
 import commerce from '../../lib/commerce';
+import Head from 'next/head';
 
 
 export async function getStaticProps({params}){
@@ -113,6 +114,10 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
 
   return(
     <Container h='full' maxW='container.xl' py={{base: 4, md: 0}}>
+      <Head>
+        <title>Kommerce | {name}</title>
+        <meta name="description" content='Kommerce product page' />
+      </Head>
       <Grid h='full' templateColumns={{base: '1fr', md: '1fr 1fr'}} rounded='md' bg={'whiteAlpha.100'}>
         <Box minH={{base: 'xs', md: 'full'}} position={'relative'} overflow={'hidden'} roundedLeft={'md'} roundedRight={{base: 'md', md: 'none'}}>
           <Image

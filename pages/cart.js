@@ -97,7 +97,7 @@ const CartPage = () => {
   return (
     <Box h='full' w='full'>
       <Head>
-        <title>Cart</title>
+        <title>Kommerce | Cart</title>
         <meta name="description" content="Your Kommerce Shopping Cart." />
       </Head>
       {

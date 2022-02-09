@@ -1,4 +1,5 @@
 import { Tab, TabList, TabPanel, TabPanels, Tabs, Grid, Container, Heading, Stack, CircularProgress } from '@chakra-ui/react';
+import Head from 'next/head';
 import Product from '../components/Product';
 import { useCart } from '../context/cart';
 
@@ -31,6 +32,10 @@ const Home = ({ categories, products }) => {
 
   return (
     <Container h='full' maxW='container.xl' mx='auto' my={8}>
+      <Head>
+        <title>Kommerce | Home</title>
+        <meta name="description" content="Kommerce store homepage." />
+      </Head>
       <Tabs isFitted variant='enclosed'>
         <TabList>
           {categories.map(category=><Tab key={category.id} fontWeight={'bold'} fontSize={'lg'}>{category.name}</Tab>)}
