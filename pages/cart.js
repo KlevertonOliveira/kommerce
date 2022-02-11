@@ -95,14 +95,14 @@ const CartPage = () => {
 
   const FilledCart = () => (
     <>
-    <Flex h={'full'} direction={'column'}>  
-      <Box bg={'whiteAlpha.200'} rounded={'sm'} py={4}>
+    <Grid minH={'full'} gap={8}>  
+      <Box h={'4.5rem'} bg={'whiteAlpha.200'} rounded={'sm'}>
         <Container h='full' maxW={{base: 'container.xl', md: 'container.lg'}} display={'flex'} alignItems={'center'}>
           <Heading size={'lg'}>Your Cart</Heading>
         </Container>
       </Box>
 
-      <Flex flex={1} direction={'column'} justifyContent={'space-around'}>  
+      <Flex flex={1} direction={'column'} justifyContent={'space-around'} gap={8}>  
         <Container maxW={{base: 'container.xl', md: 'container.lg'}}>
           <Table p={4} size={{base: 'sm', md: 'md'}}>
             <Thead>
@@ -135,7 +135,7 @@ const CartPage = () => {
           </Flex>
         </Container>
 
-        <Container maxW={{base: 'container.xl', md: 'container.lg'}} >
+        <Container maxW={{base: 'container.xl', md: 'container.lg'}} mb={8}>
           <Flex direction={{base: 'column', sm: 'row'}} justifyContent={{base: 'initial', sm: 'space-between'}} gap={2}>
             <Button 
               w={{base: 'full', sm: 'fit-content'}}
@@ -181,7 +181,7 @@ const CartPage = () => {
           </AlertDialogOverlay>
         </AlertDialog>
       </Flex>
-    </Flex>
+    </Grid>
   </>
 )
 
