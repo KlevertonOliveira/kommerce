@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import NextLink from 'next/link';
 
 import Image from 'next/image';
@@ -16,23 +16,14 @@ const CartItem = ({id, image, name, price, quantity, permalink, line_total, setC
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [isUpdatingQuantity, setIsUpdatingQuantity] = useState(false);
 
-  useEffect(()=>{
-    if(!isUpdatingQuantity){
-      setCurrentQuantity(quantity);
-    }
-  }, [isUpdatingQuantity])
-
   const toast = useToast();
 
   async function removeItem(){
-    let title, status, description;
+    let title='success', status='success', description;
 
     try{
       const {cart: updatedCart} = await commerce.cart.remove(id);
       setCart(updatedCart);
-
-      title='success';
-      status='success';
       description=`${name} has been succesfully removed.`
     }
     catch(error){
@@ -50,31 +41,21 @@ const CartItem = ({id, image, name, price, quantity, permalink, line_total, setC
     })
   }
 
-  async function increaseItemQuantity(){
+  async function updateItemQuantityOnClick(newQuantity){
     setIsUpdatingQuantity(true);
-    const {cart: updatedCart} = await commerce.cart.update(id, {quantity: quantity + 1});
-    setCart(updatedCart);
-    setIsUpdatingQuantity(false);
-  }
-  
-  async function decreaseItemQuantity(){
-    setIsUpdatingQuantity(true);
-    if(quantity > 1){
-      const {cart: updatedCart} = await commerce.cart.update(id, {quantity: quantity - 1});
+    if(newQuantity == 0) {setIsAlertOpen(true)}
+    else{
+      const {cart: updatedCart} = await commerce.cart.update(id, {quantity: newQuantity});
       setCart(updatedCart);
       setCurrentQuantity(quantity);
-    }
-    else{
-      removeItem();
     }
     setIsUpdatingQuantity(false);
   }
 
   async function updateItemQuantityWithInput(){
-    if(currentQuantity === quantity) return 
+    if(currentQuantity === quantity) return    
+    if(currentQuantity == 0) return setIsAlertOpen(true);
     
-    if(currentQuantity == 0) return setIsAlertOpen(true)
-  
     setIsUpdatingQuantity(true);
     const {cart: updatedCart} = await commerce.cart.update(id, {quantity: currentQuantity});
     setCart(updatedCart);
@@ -140,8 +121,8 @@ const CartItem = ({id, image, name, price, quantity, permalink, line_total, setC
             >
               <NumberInputField textAlign={'center'} color='white' fontWeight={'bold'} onChange={(e)=>setCurrentQuantity(e.target.value)}/>
               <NumberInputStepper bg='transparent'>
-                <NumberIncrementStepper onClick={increaseItemQuantity}/>
-                <NumberDecrementStepper onClick={decreaseItemQuantity}/>
+                <NumberIncrementStepper onClick={()=>{updateItemQuantityOnClick(quantity+1)}}/>
+                <NumberDecrementStepper onClick={()=>{updateItemQuantityOnClick(quantity-1)}}/>
               </NumberInputStepper>
             </NumberInput>
           </Box>

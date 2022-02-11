@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useCart } from '../context/cart';
@@ -7,9 +9,9 @@ import { Box, Heading, Grid, CircularProgress, Container, Button, Divider, Text}
 import CheckoutStepper from '../components/CheckoutStepper';
 import ShippingAddressForm from '../components/ShippingAddressForm';
 import PaymentForm from '../components/PaymentForm';
+import Loading from '../components/Loading';
 
 import commerce from '../lib/commerce';
-import Head from 'next/head';
 
 const Checkout = () => {
 
@@ -68,10 +70,7 @@ const Checkout = () => {
   }
 
   if(isLoading || !checkoutToken) return (
-    <Grid h='full' justifyItems={'center'} alignContent={'center'}>
-      <Heading fontSize={'5xl'} textAlign={'center'}>Loading...</Heading>
-      <CircularProgress isIndeterminate color='green.300' />
-    </Grid>
+    <Loading />
   )
 
   let Confirmation = () => order.customer ? 

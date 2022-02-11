@@ -10,7 +10,7 @@ const ShippingAddressForm = ({checkoutToken, getShippingData}) => {
 
   const router = useRouter();
 
-  /* Countries info to populate Select's options */
+  /* Countries info to populate first Select's options */
   const [shippingCountries, setShippingCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
 
@@ -26,7 +26,7 @@ const ShippingAddressForm = ({checkoutToken, getShippingData}) => {
 
   const countries = Object.entries(shippingCountries).map(([code, name])=>({id: code, label: name}));
 
-  /* Subdivisions info to populate Select's options */
+  /* Subdivisions info to populate second Select's options */
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
   const [selectedSubdivision, setSelectedSubdivision] = useState('');
 
@@ -42,7 +42,7 @@ const ShippingAddressForm = ({checkoutToken, getShippingData}) => {
 
   const subdivisions = Object.entries(shippingSubdivisions).map(([code, name])=>({id: code, label: name}));
   
-  /* Subdivisions info to populate Select's options */
+  /* Subdivisions info to populate third Select's options */
   const [shippingOptions, setShippingOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
   const [shippingOptionPrice, setShippingOptionPrice] = useState(0);

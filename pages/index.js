@@ -1,7 +1,9 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs, Grid, Container, Heading, Stack, CircularProgress } from '@chakra-ui/react';
-import Head from 'next/head';
-import Product from '../components/Product';
 import { useCart } from '../context/cart';
+
+import Head from 'next/head';
+import { Tab, TabList, TabPanel, TabPanels, Tabs, Grid, Container } from '@chakra-ui/react';
+import Loading from '../components/Loading';
+import Product from '../components/Product';
 
 import commerce from "../lib/commerce";
 
@@ -23,10 +25,7 @@ const Home = ({ categories, products }) => {
 
   if(isLoading){
     return (
-      <Grid h='full' justifyItems={'center'} alignContent={'center'}>
-        <Heading fontSize={'5xl'} textAlign={'center'}>Loading...</Heading>
-        <CircularProgress isIndeterminate color='green.300' />
-      </Grid>
+      <Loading/>
     )
   }
 

@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useCart } from '../../context/cart';
 
+import Head from 'next/head';
 import Image from 'next/image';
 import {Box, Grid, Heading, Text, Flex, Button, useToast, Tooltip, Badge, Icon, Container, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, CircularProgress} from '@chakra-ui/react';
+import Loading from '../../components/Loading';
 
 import { StarIcon } from '@chakra-ui/icons';
 import { FaShoppingCart } from 'react-icons/fa';
 
 import commerce from '../../lib/commerce';
-import Head from 'next/head';
 
 
 export async function getStaticProps({params}){
@@ -105,10 +106,7 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
 
   if(pageLoading){
     return (
-      <Grid h='full' justifyItems={'center'} alignContent={'center'}>
-        <Heading fontSize={'5xl'} textAlign={'center'}>Loading...</Heading>
-        <CircularProgress isIndeterminate color='green.300' />
-      </Grid>
+      <Loading />
     )
   }
 

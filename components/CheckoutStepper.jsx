@@ -16,7 +16,7 @@ const CheckoutStepper = ({activeStep}) => {
     >
       <Flex p={2} px={4} gap={2} alignItems={'center'}>
         <Grid placeItems={'center'} bg={'blue.600'} w={7} h={7} rounded='full'>
-          {activeStep < 2 ? 1 : <CheckIcon />}
+          {activeStep > 1 ? <CheckIcon /> : 1}
         </Grid>
         <Text mt={1} fontWeight={'semibold'}>Shipping Address</Text>
       </Flex>
@@ -25,7 +25,7 @@ const CheckoutStepper = ({activeStep}) => {
       </Grid>
       <Flex p={2} px={4} gap={2} alignItems={'center'}>
         <Grid placeItems={'center'} bg={activeStep > 1 ? 'blue.600' : 'whiteAlpha.400'} w={7} h={7} rounded='full'>
-          {activeStep <= 2 ? 2 : <CheckIcon/> }
+          {activeStep > 2 ? <CheckIcon/> : 2 }
         </Grid>
         <Text mt={1} fontWeight={'semibold'}>Payment details</Text>
       </Flex>
