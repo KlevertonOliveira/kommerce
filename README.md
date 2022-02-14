@@ -1,34 +1,159 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛒 Kommerce (English / Português)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/KlevertonOliveira/kommerce/blob/main/LICENSE)
 
-## Getting Started
+---
 
-First, run the development server:
+[Live Project Site](https://kommerce-klevertonoliveira.vercel.app/) /
+[Site do Projeto ao vivo](https://kommerce-klevertonoliveira.vercel.app/)
+
+---
+
+## :art: Layout
+### Mobile
+![Alt Text](project_preview/kommerce-mobile.png)
+
+---
+
+### Desktop
+![Alt Text](project_preview/kommerce-desktop.png)
+
+---
+
+## :movie_camera: Project Presentation / Apresentação do Projeto
+![Alt Text](project_preview/kommerce.gif)
+
+---
+
+# English :uk:
+
+## :mag_right: About the project
+
+Kommerce is a project built with the intention of putting my skills into practice by developing an e-commerce virtual store application. For this purpose, the application uses the React ecosystem (with Next.js) and the CommerceJS and Stripe external APIs, in order to facilitate the development process.
+
+More details about the project and the creation process can be found [here](MODIFICAR).
+
+---
+
+## :medal_military: Features
+* Navigation and selection of products to compose shopping cart;
+* Add products to cart (by quantity);
+* Update products' quantities;
+* Remove products;
+* Clear cart;
+* Registration of user information for shipping;
+* Registration of payment information;
+* Transaction completion status feedback;
+
+----
+
+## :gear: Technologies Used
+
+### Front end
+- HTML5
+- [Next JS](https://nextjs.org/) (React Framework)
+- [Chakra UI](https://chakra-ui.com/) (React Library for creating User Interfaces and Design Systems)
+- [CommerceJS](https://commercejs.com/) (API focused on managing e-commerce services)
+- [Stripe](https://stripe.com/br) (API focused on payments, transfers and management of online operations)
+
+## :file_folder: How to run the project 
+
+Prerequisites: npm / yarn
 
 ```bash
-npm run dev
-# or
+# Clone repository
+git clone git@github.com:KlevertonOliveira/kommerce.git
+
+# Enter the project folder
+cd kommerce
+
+# Install dependencies
+yarn install 
+or 
+npm install
+
+# Extra steps necessary to run the project:
+## Create an account at the CommerceJS website in order to get a unique Api key (public and sandbox).
+## Create an account at the Stripe website in order to get a unique Api key.
+## Create a .env file and fill it following the model defined at .env.example using the Api keys obtained previously;
+## At CommerceJS, it'll be necessary to register some products in order be able to use them inside the application.
+ 
+
+# Run the project
 yarn dev
+or
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## :raising_hand_man: Author
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+José Kleverton Yvens Oliveira
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+https://www.linkedin.com/in/kleverton-oliveira/
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-## Learn More
+# Português :brazil:
 
-To learn more about Next.js, take a look at the following resources:
+## :mag_right: Sobre o projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Kommerce é um projeto construído com o intuito de colocar em prática minhas habilidades ao desenvolver uma aplicação de loja virtual de comércio eletrônico. A aplicação utiliza, para isso, o ecossistema React (Next.js) e as APIs externas CommerceJS e Stripe, em vista a facilitar o processo de desenvolvimento.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Mais detalhes sobre o projeto e o processo de criação podem ser encontrados [aqui](MODIFICAR).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## :medal_military: Features
+* Navegação e seleção de produtos para composição do carrinho de compras;
+* Adição de produtos por quantidades;
+* Atualização de quantidades de produtos e gerenciamento do carrinho de compras;
+* Remoção de produtos;
+* Cadastro de informações do usuário para envio dos produtos;
+* Cadastro de informações para realização do pagamento;
+* Notificação/Feedback do status de conclusão da transação;
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## :gear: Tecnologias utilizadas
+
+### Front end
+- HTML5
+- [Next JS](https://nextjs.org/) (React Framework)
+- [Chakra UI](https://chakra-ui.com/) (Biblioteca React para a criação de interfaces de usuário e Design Systems)
+- [CommerceJS](https://commercejs.com/) (API com foco no gerenciamento de serviços de comércio eletrônico)
+- [Stripe](https://stripe.com/br) (API centrada em pagamentos, repasses e gerenciamento de operações online)
+
+---
+
+Pré-requisitos: npm / yarn
+
+```bash
+# Clonar repositório
+git clone git@github.com:KlevertonOliveira/kommerce.git
+
+# Entrar na pasta do projeto
+cd kommerce
+
+# Instalar dependências
+yarn install 
+ou 
+npm install
+
+# Configurações extras necessárias para execução do projeto:
+## Criar uma conta no website da CommerceJS para obter uma chave de API única (public e sandbox).
+## Criar uma conta no website da Stripe para obter uma chave de API única.
+## Criar um arquivo .env e preenchê-lo conforme o arquivo .env.example usando as chaves de API obtidas anteriormente;
+## No site da CommerceJS, é necessário realizar o cadastro de alguns produtos para a utilização dos mesmos dentro da aplicação.
+
+# Executar o projeto
+yarn dev
+ou
+npm run dev
+```
+
+## :raising_hand_man: Autor
+
+José Kleverton Yvens Oliveira
+
+https://www.linkedin.com/in/kleverton-oliveira/
+
+
