@@ -48,19 +48,18 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
   
   const {cart, setCart, isLoading} = useCart();
   const [currentQuantity, setCurrentQuantity] = useState(0);
-  const [pageLoading, setPageLoading] = useState(true); 
-  
+  const [isPageLoading, setIsPageLoading] = useState(true); 
+
   useEffect(()=>{
-    setPageLoading(true);
     if(!isLoading){
       const cartContainsProduct = cart?.line_items.some(p=>p.product_id === id);
       const productQuantity = (
         cartContainsProduct ? cart?.line_items.find(p=>p.product_id === id).quantity : 0
       );
       setCurrentQuantity(productQuantity);
-      setPageLoading(false);
+      setIsPageLoading(false);
     }
-  }, [cart, isLoading])
+  }, [isLoading])    
 
   async function addToCart() {
     let title='Success', status='success', description;
@@ -73,6 +72,7 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
       title = 'Error!';
       status = 'error';
       description = `You need to specify a quantity (greater than 0) of this product before add to cart.`
+      setCurrentQuantity(storedQuantity)
     }
 
     else if(storedQuantity > 0 && currentQuantity === storedQuantity){
@@ -104,11 +104,7 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
     currentQuantity > 0 && router.push('/cart');
   }
 
-  if(pageLoading){
-    return (
-      <Loading />
-    )
-  }
+  if(isPageLoading) return <Loading />
 
   return(
     <Container h='full' maxW='container.xl' py={{base: 4, md: 0}}>
@@ -165,8 +161,8 @@ const ProductPage = ({product: {id, name, description, price, image, categories}
               </Flex>
             </Box>
             <Flex direction={{base: 'column', md: 'row'}} gap={2} mb={4}>
-              <NumberInput defaultValue={currentQuantity} max={30} min={0} rounded='md' bg={'gray.600'}>
-                <NumberInputField textAlign={'center'} color='white' fontWeight={'bold'}/>
+              <NumberInput value={currentQuantity} max={30} min={0} rounded='md' bg={'gray.600'}>
+                <NumberInputField textAlign={'center'} color='white' fontWeight={'bold'} onChange={(e)=>setCurrentQuantity(Number(e.target.value))}/>
                 <NumberInputStepper bg='transparent'>
                   <NumberIncrementStepper onClick={()=>{setCurrentQuantity(prevQt=>prevQt + 1)}}/>
                   <NumberDecrementStepper onClick={()=>{currentQuantity > 0 && setCurrentQuantity(prevQt=>prevQt - 1)}}/>
