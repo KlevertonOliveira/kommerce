@@ -36,7 +36,7 @@ const CartItem = ({id, image, name, price, quantity, permalink, line_total, setC
       title,
       status,
       description,
-      duration: 9000,
+      duration: 3000,
       isClosable: true,
     })
   }
