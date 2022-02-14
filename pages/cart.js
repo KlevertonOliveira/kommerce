@@ -45,7 +45,7 @@ const CartPage = () => {
       title,
       status,
       description,
-      duration: 9000,
+      duration: 3000,
       isClosable: true,
     })
   }
