@@ -2,7 +2,7 @@
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/KlevertonOliveira/kommerce/blob/main/LICENSE)
 
 ---
-
+## :link: Links
 [Live Project Site](https://kommerce-klevertonoliveira.vercel.app/) /
 [Site do Projeto ao vivo](https://kommerce-klevertonoliveira.vercel.app/)
 
@@ -19,12 +19,13 @@
 
 ---
 
-## :movie_camera: Project Presentation / Apresentação do Projeto
-![Alt Text](project_preview/kommerce.gif)
+## :movie_camera: Project Demonstration / Demonstração do Projeto
+
+https://user-images.githubusercontent.com/71989630/158438547-6178cde5-9b08-4fc4-976b-ecac387e80c4.mp4
 
 ---
 
-# English :uk:
+# English :uk:/:us:
 
 ## :mag_right: About the project
 
@@ -90,6 +91,8 @@ José Kleverton Yvens Oliveira
 
 https://www.linkedin.com/in/kleverton-oliveira/
 
+---
+---
 ---
 
 # Português :brazil:
